@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Allenamento – Disequazioni 2° grado</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--db:#1F3864;--mb:#2E75B6;--lb:#D6E4F0;--vlb:#EBF3FB;--acc:#E8A838;--ok:#27AE60;--bg:#F0F4F8;--card:#fff;--text:#2C3E50;--muted:#7F8C8D;--r:10px;--sh:0 2px 8px rgba(0,0,0,.09);--fs:16px;--lh:1.65}
+body.dsa{--fs:19px;--lh:1.95;letter-spacing:.04em}
+body.dsa .ec{border-left:5px solid var(--acc)!important}
+body.dsa details>summary{background:#FFF8E7!important}
+body{font-family:'Segoe UI',system-ui,sans-serif;font-size:var(--fs);line-height:var(--lh);background:var(--bg);color:var(--text)}
+#nav{position:sticky;top:0;z-index:100;background:var(--db);color:#fff;padding:0 16px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.ni{max-width:960px;margin:auto;display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 0}
+.ntitle{font-size:1em;font-weight:700;flex:1;min-width:180px}
+.nlinks a{color:#cce;text-decoration:none;padding:3px 9px;border-radius:5px;font-size:.82em;margin-right:2px}
+.nlinks a:hover{background:rgba(255,255,255,.15)}
+.nc{display:flex;gap:7px;align-items:center}
+.btn{border:none;border-radius:7px;padding:6px 13px;cursor:pointer;font-size:.82em;font-weight:700;transition:.15s}
+.bdsa{background:var(--acc);color:#fff}.bdsa:hover{background:#d4941f}
+.bexp{background:rgba(255,255,255,.15);color:#fff}.bexp:hover{background:rgba(255,255,255,.25)}
+#pb{background:rgba(255,255,255,.18);border-radius:20px;padding:3px 11px;font-size:.78em;white-space:nowrap}
+main{max-width:960px;margin:0 auto;padding:22px 14px 56px}
+.intro{background:var(--vlb);border-left:5px solid var(--mb);border-radius:var(--r);padding:16px 20px;margin-bottom:28px;font-size:.95em}
+.intro h2{color:var(--db);margin-bottom:5px;font-size:1em}
+.ts{margin-bottom:44px}
+.th{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.tbadge{border-radius:7px;padding:4px 13px;font-weight:700;font-size:.92em;color:#fff}
+.t1 .tbadge{background:#2E75B6}.t2 .tbadge{background:#8E44AD}.t3 .tbadge{background:#E67E22}.t4 .tbadge{background:#27AE60}.t5 .tbadge{background:#C0392B}
+.ttitle{font-size:1.28em;font-weight:700;color:var(--db)}
+/* teoria */
+.tbox{background:#fff;border:2px solid var(--lb);border-radius:var(--r);margin-bottom:18px;overflow:hidden;box-shadow:var(--sh)}
+.tbox summary{display:flex;align-items:center;gap:9px;padding:13px 18px;cursor:pointer;user-select:none;background:var(--vlb);font-weight:600;color:var(--db);list-style:none;font-size:.95em}
+.tbox summary::-webkit-details-marker{display:none}
+.tarrow{margin-left:auto;transition:.3s;font-size:.8em;color:var(--mb)}
+.tbox[open] .tarrow{transform:rotate(180deg)}
+.tbody{padding:18px 22px;border-top:1px solid var(--lb);font-size:.96em}
+.tbody h4{color:var(--mb);margin:12px 0 5px}
+.tbody ol,.tbody ul{padding-left:22px}
+.tbody li{margin-bottom:6px}
+.schema{background:var(--vlb);border-radius:7px;padding:12px 16px;margin:10px 0}
+.caso{margin-bottom:7px;padding-left:9px;border-left:3px solid var(--mb)}
+/* exercise card */
+.ec{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:18px;overflow:hidden;border-top:4px solid var(--mb)}
+.t1 .ec{border-top-color:#2E75B6}.t2 .ec{border-top-color:#8E44AD}.t3 .ec{border-top-color:#E67E22}.t4 .ec{border-top-color:#27AE60}.t5 .ec{border-top-color:#C0392B}
+.ec-hdr{display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--vlb)}
+.t2 .ec-hdr{background:#F5EEF8}.t3 .ec-hdr{background:#FDF2E9}.t4 .ec-hdr{background:#EAFAF1}.t5 .ec-hdr{background:#FDEDEC}
+.ec-num{border-radius:6px;padding:3px 11px;font-weight:700;font-size:.88em;color:#fff;background:var(--mb)}
+.t1 .ec-num{background:#2E75B6}.t2 .ec-num{background:#8E44AD}.t3 .ec-num{background:#E67E22}.t4 .ec-num{background:#27AE60}.t5 .ec-num{background:#C0392B}
+.ec-sub{color:var(--muted);font-size:.85em;font-style:italic}
+.ec-body{padding:16px 20px}
+.enun{background:var(--vlb);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:1.02em}
+.fc{text-align:center;font-size:1.1em;padding:8px 0}
+/* hint */
+.hint-d{margin-bottom:10px}
+.hint-d summary{display:flex;align-items:center;gap:7px;padding:7px 13px;cursor:pointer;user-select:none;background:#FFF8E7;border:1px dashed var(--acc);border-radius:7px;font-weight:600;color:#7a5c00;list-style:none;font-size:.9em}
+.hint-d summary::-webkit-details-marker{display:none}
+.hint-body{background:#FFFDF0;border:1px dashed var(--acc);border-top:none;border-radius:0 0 7px 7px;padding:10px 14px;font-size:.91em}
+.hint-body ol{padding-left:18px}.hint-body li{margin-bottom:5px}
+/* solution */
+.sol-d summary{display:flex;align-items:center;gap:7px;padding:9px 14px;cursor:pointer;user-select:none;background:#EAF7ED;border:1.5px solid var(--ok);border-radius:8px;font-weight:700;color:#1a6637;list-style:none;font-size:.9em}
+.sol-d summary::-webkit-details-marker{display:none}
+.sol-d summary:hover{background:#d4f0da}
+.sol-d[open] summary{border-radius:8px 8px 0 0}
+.sol-body{border:1.5px solid var(--ok);border-top:none;border-radius:0 0 8px 8px;padding:14px 18px;background:#F8FFF9}
+.step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.step-n{background:var(--mb);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8em;flex-shrink:0;margin-top:2px}
+.step-body{flex:1;font-size:.94em}
+.sol-res{background:var(--lb);border-radius:7px;padding:9px 14px;margin-top:10px;font-weight:700;color:var(--db);font-size:.98em}
+/* system */
+.sys-wrap{display:flex;align-items:center;gap:8px;margin-top:8px}
+.sys-brace{font-size:2.2em;color:var(--mb);font-weight:300;line-height:1}
+.sys-line{padding:3px 0;font-size:1.05em}
+
+.sc{border:1.5px solid #aaa;border-radius:8px;overflow:hidden;margin:14px 0;font-size:.88em;overflow-x:auto}
+.sc-r{display:flex;border-bottom:1px solid #ccc;min-height:36px}
+.sc-r:last-child{border-bottom:none}
+.sc-lb{flex:0 0 140px;padding:5px 10px;font-weight:700;color:#1F3864;background:#EBF3FB;border-right:2px solid #2E75B6;display:flex;align-items:center;font-size:.85em}
+.sc-hdr .sc-lb{background:#2E75B6;color:#fff;border-right-color:#1F3864}
+.sc-hdr .sc-iv{background:#f0f0f0;color:#777;font-size:.8em}
+.sc-hdr .sc-pt{background:#ddd;border-color:#999;font-weight:700;font-size:.9em}
+.sc-iv{flex:2;text-align:center;padding:6px 2px;font-weight:700;font-size:1.1em;display:flex;align-items:center;justify-content:center}
+.sc-pt{flex:1;text-align:center;border-left:2px solid #888;border-right:2px solid #888;font-weight:700;display:flex;align-items:center;justify-content:center;min-width:28px}
+.sp{background:#d4edda;color:#155724}
+.sn{background:#fde8e8;color:#c0392b}
+.sz{background:#fff3cd;color:#856404}
+.sx{background:#fce;color:#900;font-style:italic}
+.sc-res .sp{background:#27ae60;color:#fff}
+.sc-res .sn{background:#e74c3c;color:#fff}
+.sc-res .sz{background:#f39c12;color:#fff}
+.sc-res .sx{background:#c00;color:#fff}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="ni">
+  <div class="ntitle">📐 Disequazioni di 2° grado — Allenamento</div>
+  <div class="nlinks">
+    <a href="#tipo1">Tipo 1</a><a href="#tipo2">Tipo 2</a><a href="#tipo3">Tipo 3</a>
+    <a href="#tipo4">Tipo 4</a><a href="#tipo5">Tipo 5</a>
+  </div>
+  <div class="nc">
+    <button class="btn bexp" id="btn-exp">▼ Espandi tutto</button>
+    <button class="btn bdsa" id="btn-dsa">🔤 Modalità DSA</button>
+    <div id="pb">Soluzioni viste: 0/15</div>
+  </div>
+</div></nav>
+<main>
+<div class="intro"><h2>Come usare questa pagina</h2>
+<p>Per ogni tipologia c'è una sezione di <strong>teoria a scomparsa</strong> e 3 esercizi.
+Apri il <strong>suggerimento 💡</strong> se sei bloccato, poi confrontati con la <strong>soluzione ✅</strong>.
+Lavora sul quaderno. Il bottone <em>DSA</em> aumenta la leggibilità.</p></div>
+<section class="ts t1" id="tipo1">
+  <div class="th"><span class="tbadge">Tipo 1</span><span class="ttitle">Disequazioni di secondo grado</span></div>
+  <details class="tbox">
+  <summary><span>📐</span> Teoria: disequazioni algebriche <span class="tarrow">▼</span></summary>
+  <div class="tbody">
+<p>Forma standard: porta tutto al 1° membro &rarr; <strong>ax²+bx+c ◻ 0</strong>.</p>
+<ol>
+  <li>Calcola <strong>\(\Delta = b^2-4ac\)</strong>.</li>
+  <li>Se \(\Delta&gt;0\): radici \(x_1&lt;x_2\); se \(a&gt;0\) e \(\leq 0\) &rarr; \([x_1,x_2]\); se \(\geq 0\) &rarr; esterno.</li>
+  <li>Se \(\Delta=0\): unica radice \(x_0\); la parabola tocca l'asse in un solo punto.</li>
+  <li>Se \(\Delta&lt;0\) e \(a&gt;0\): espressione sempre positiva.</li>
+</ol>
+<div class="schema">
+  <div class="caso"><strong>a&gt;0, \(\Delta&gt;0\):</strong> la parabola ∪ taglia l'asse in \(x_1, x_2\). Sotto l'asse: \([x_1,x_2]\).</div>
+  <div class="caso"><em>Domanda guida: perché portare tutto al 1° membro prima di applicare le regole?</em></div>
+</div></div>
+</details>
+  
+<div class="ec" id="ex-1-1">
+  <div class="ec-hdr"><span class="ec-num">Es. 1.1</span><span class="ec-sub">Disequazione di 2° grado</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi:</strong><div class='fc'>\( (x+2)^2 \geq 3x+10 \)</div></div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Sviluppa \((x+2)^2\) e porta tutto al 1° membro.</li><li>Calcola \(\Delta = b^2-4ac\).</li><li>Il coefficiente di \(x^2\) è positivo (parabola ∪).</li></ol></div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Sviluppo: \(x^2+4x+4 \geq 3x+10\) &rarr; \(x^2+x-6 \geq 0\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">\(\Delta = 1+24 = 25\) &rarr; \(x_1=-3,\; x_2=2\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Con \(a=1&gt;0\) e \(\geq 0\): soluzione esterna alle radici.</div></div><div class="sol-res">Soluzione: \(x \leq -3 \quad\text{oppure}\quad x \geq 2\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-1-2">
+  <div class="ec-hdr"><span class="ec-num">Es. 1.2</span><span class="ec-sub">Disequazione di 2° grado</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi:</strong><div class='fc'>\( (x-4)^2 > 2x-8 \)</div></div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Sviluppa \((x-4)^2\) e porta tutto al 1° membro.</li><li>\(\Delta\) è piccolo: controlla i calcoli.</li></ol></div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">\(x^2-8x+16 &gt; 2x-8\) &rarr; \(x^2-10x+24 &gt; 0\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">\(\Delta = 100-96 = 4\) &rarr; \(x_1=4,\; x_2=6\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Con \(a=1&gt;0\) e \(&gt;0\): soluzione esterna (escluse le radici).</div></div><div class="sol-res">Soluzione: \(x < 4 \quad\text{oppure}\quad x > 6\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-1-3">
+  <div class="ec-hdr"><span class="ec-num">Es. 1.3</span><span class="ec-sub">Disequazione di 2° grado</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi:</strong><div class='fc'>\( (2x+3)^2 \leq 9-2x \)</div></div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Sviluppa \((2x+3)^2\) e porta tutto al 1° membro.</li><li>Il trinomio si semplifica: cerca un fattore comune.</li></ol></div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">\(4x^2+12x+9 \leq 9-2x\) &rarr; \(4x^2+14x \leq 0\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Raccolgo: \(2x(2x+7) \leq 0\) &rarr; radici \(x=0\) e \(x=-\frac{7}{2}\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Con \(a=4&gt;0\) e \(\leq 0\): soluzione interna.</div></div><div class="sol-res">Soluzione: \(-\tfrac{7}{2} \leq x \leq 0\)</div></div>
+    </details>
+  </div>
+</div>
+</section>
+<section class="ts t2" id="tipo2">
+  <div class="th"><span class="tbadge">Tipo 2</span><span class="ttitle">Lettura dal grafico</span></div>
+  <details class="tbox">
+  <summary><span>📊</span> Teoria: lettura dal grafico <span class="tarrow">▼</span></summary>
+  <div class="tbody">
+<p>La parabola \(y=f(x)\) interseca la retta \(y=k\) dove \(f(x)=k\).</p>
+<ol>
+  <li>Calcola \(\Delta\), radici \(x_1, x_2\), vertice \(V(x_V, y_V)\) con \(x_V=-\frac{b}{2a}\).</li>
+  <li>Disegna la parabola (∪ se \(a&gt;0\), ∩ se \(a&lt;0\)).</li>
+  <li>Traccia la retta \(y=k\) e leggi dove la parabola è sopra/sotto.</li>
+</ol>
+<div class="schema">
+  <div class="caso"><strong>f(x) &lt; k</strong>: dove la parabola è <em>sotto</em> la retta \(y=k\).</div>
+  <div class="caso"><strong>f(x) &gt; k</strong>: dove la parabola è <em>sopra</em> la retta \(y=k\).</div>
+  <div class="caso"><em>Domanda guida: se abbasso il valore k, come cambia la soluzione di f(x) &lt; k?</em></div>
+</div></div>
+</details>
+  
+<div class="ec" id="ex-2-1">
+  <div class="ec-hdr"><span class="ec-num">Es. 2.1</span><span class="ec-sub">Lettura dal grafico</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Data</strong> \( f(x) = x^2-2x-3 \), disegna il grafico e leggi:
+      <ol style="margin-top:8px;padding-left:22px"><li>\(f(x) \leq 0\)</li><li>\(f(x) &gt; 5\)</li><li>\(0 &lt; f(x) &lt; 5\)</li><li>\(f(x) &lt; -3\)</li></ol>
+    </div>
+    <details class="hint-d"><summary>&#128161; Dati utili</summary>
+      <div class="hint-body">
+        <p><strong>Vertice:</strong> \(V(1,-4)\)</p>
+        <p><strong>Radici:</strong> \(x_1=-1,\; x_2=3\) &nbsp; (\(\Delta=16\))</p>
+      </div>
+    </details>
+    <details class="sol-d"><summary>&#9989; Mostra soluzioni</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">a</div><div class="step-body">\(f(x)\leq 0\) &rarr; \([-1,\,3]\)</div></div><div class="step"><div class="step-n">b</div><div class="step-body">\(f(x) &gt; 5\) &rarr; Risolvo \(x^2-2x-3=5\) &rarr; \(x^2-2x-8=0\) &rarr; \(x=-2\) o \(x=4\). Soluzione: \(x&lt;-2\) oppure \(x&gt;4\)</div></div><div class="step"><div class="step-n">c</div><div class="step-body">\(0 &lt; f(x) &lt; 5\) &rarr; Intersezione di \(f(x)&gt;0\): \(x&lt;-1\) o \(x&gt;3\), con \(f(x)&lt;5\): \(-2&lt;x&lt;4\). Risultato: \((-2,-1)\cup(3,4)\)</div></div><div class="step"><div class="step-n">d</div><div class="step-body">\(f(x) &lt; -3\) &rarr; \(x^2-2x-3&lt;-3\) &rarr; \(x^2-2x&lt;0\) &rarr; \(x(x-2)&lt;0\): &nbsp;\((0,2)\)</div></div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-2-2">
+  <div class="ec-hdr"><span class="ec-num">Es. 2.2</span><span class="ec-sub">Lettura dal grafico</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Data</strong> \( f(x) = -x^2+4x-3 \), disegna il grafico e leggi:
+      <ol style="margin-top:8px;padding-left:22px"><li>\(f(x) \geq 0\)</li><li>\(f(x) &lt; 0\)</li><li>\(-3 &lt; f(x) &lt; 0\)</li><li>\(f(x) \leq -3\)</li></ol>
+    </div>
+    <details class="hint-d"><summary>&#128161; Dati utili</summary>
+      <div class="hint-body">
+        <p><strong>Vertice:</strong> \(V(2,1)\)</p>
+        <p><strong>Radici:</strong> \(x_1=1,\; x_2=3\) &nbsp; (\(\Delta=4\))</p>
+      </div>
+    </details>
+    <details class="sol-d"><summary>&#9989; Mostra soluzioni</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">a</div><div class="step-body">\(f(x)\geq 0\) &rarr; \([1,\,3]\)</div></div><div class="step"><div class="step-n">b</div><div class="step-body">\(f(x) &lt; 0\) &rarr; \(x&lt;1\) oppure \(x&gt;3\)</div></div><div class="step"><div class="step-n">c</div><div class="step-body">\(-3 &lt; f(x) &lt; 0\) &rarr; \(f(x)&gt;-3\): \(-x^2+4x&gt;0\) &rarr; \(0&lt;x&lt;4\). Intersezione con \(f(x)&lt;0\): \((0,1)\cup(3,4)\)</div></div><div class="step"><div class="step-n">d</div><div class="step-body">\(f(x)\leq -3\) &rarr; \(x\leq 0\) oppure \(x\geq 4\)</div></div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-2-3">
+  <div class="ec-hdr"><span class="ec-num">Es. 2.3</span><span class="ec-sub">Lettura dal grafico</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Data</strong> \( f(x) = x^2-4x+4 \), disegna il grafico e leggi:
+      <ol style="margin-top:8px;padding-left:22px"><li>\(f(x) \leq 0\)</li><li>\(f(x) &gt; 4\)</li><li>\(0 &lt; f(x) &lt; 1\)</li><li>\(f(x) \geq 4\)</li></ol>
+    </div>
+    <details class="hint-d"><summary>&#128161; Dati utili</summary>
+      <div class="hint-body">
+        <p><strong>Vertice:</strong> \(V(2,0)\) &mdash; vertice <em>sull'asse x</em>!</p>
+        <p><strong>Radici:</strong> \(\Delta=0\): unica radice \(x_0=2\)</p>
+      </div>
+    </details>
+    <details class="sol-d"><summary>&#9989; Mostra soluzioni</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">a</div><div class="step-body">\(f(x)\leq 0\) &rarr; Poiché \(\Delta=0\) e \(a&gt;0\), \(f(x)\geq 0\) sempre &rarr; \(f(x)=0\) solo in \(x=2\). Soluzione: \(\{2\}\)</div></div><div class="step"><div class="step-n">b</div><div class="step-body">\(f(x) &gt; 4\) &rarr; \((x-2)^2&gt;4\) &rarr; \(|x-2|&gt;2\) &rarr; \(x&lt;0\) oppure \(x&gt;4\)</div></div><div class="step"><div class="step-n">c</div><div class="step-body">\(0 &lt; f(x) &lt; 1\) &rarr; \((x-2)^2&lt;1\) &rarr; \(1&lt;x&lt;3\); e \((x-2)^2&gt;0\) &rarr; \(x\neq 2\). Soluzione: \((1,2)\cup(2,3)\)</div></div><div class="step"><div class="step-n">d</div><div class="step-body">\(f(x)\geq 4\) &rarr; \(x\leq 0\) oppure \(x\geq 4\)</div></div></div>
+    </details>
+  </div>
+</div>
+</section>
+<section class="ts t3" id="tipo3">
+  <div class="th"><span class="tbadge">Tipo 3</span><span class="ttitle">Disequazioni fratte</span></div>
+  <details class="tbox">
+  <summary><span>🔢</span> Teoria: disequazioni fratte <span class="tarrow">▼</span></summary>
+  <div class="tbody">
+<p>Per \(\dfrac{N(x)}{D(x)} \square\; 0\):</p>
+<ol>
+  <li>Fattorizza N(x) e D(x) separatamente.</li>
+  <li>Trova gli zeri di N (dove la frazione vale 0) e di D (valori <strong>esclusi</strong>).</li>
+  <li>Costruisci la <strong>tabella dei segni</strong> con tutti i valori critici in ordine.</li>
+  <li>Seleziona gli intervalli con il segno richiesto. I valori ∥ sono sempre esclusi!</li>
+</ol>
+<div class="schema">
+  <div class="caso">Regola dei segni: \(\frac{+}{+}=+\), \(\frac{-}{-}=+\), \(\frac{+}{-}=-\), \(\frac{-}{+}=-\)</div>
+  <div class="caso"><em>Domanda guida: perché i valori che annullano il denominatore sono sempre esclusi?</em></div>
+</div></div>
+</details>
+  
+<div class="ec" id="ex-3-1">
+  <div class="ec-hdr"><span class="ec-num">Es. 3.1</span><span class="ec-sub">Disequazione fratta</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi:</strong><div class="fc">\( \dfrac{x^2-1}{x^2-x-6} \geq 0 \)</div></div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body">
+        <p><strong>N(x) fattorizzato:</strong> \((x-1)(x+1)\)</p>
+        <p><strong>D(x) fattorizzato:</strong> \((x-3)(x+2)\)</p>
+        <p>Valori critici in ordine: \(-2\) (escluso), \(-1\), \(1\), \(3\) (escluso)</p>
+      </div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra tabella e soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Fattorizzo: \(N=(x-1)(x+1)\), \(D=(x-3)(x+2)\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Zeros di N: \(x=\pm1\). Esclusi (D=0): \(x=-2, x=3\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Studio il segno riga per riga (vedi tabella sopra)</div></div><div class="step"><div class="step-n">4</div><div class="step-body">Seleziono gli intervalli con \(N/D \geq 0\) (verde e ○), escludo i \(\parallel\)</div></div><div class="sc"><div class="sc-r sc-hdr"><div class="sc-lb">x</div><div class="sc-iv"></div><div class="sc-pt">\(-2\)</div><div class="sc-iv"></div><div class="sc-pt">\(-1\)</div><div class="sc-iv"></div><div class="sc-pt">\(1\)</div><div class="sc-iv"></div><div class="sc-pt">\(3\)</div><div class="sc-iv"></div></div><div class="sc-r"><div class="sc-lb">\(N\!=\!(x{-}1)(x{+}1)\)</div><div class="sc-iv sp">+</div><div class="sc-pt sp"><small>+</small></div><div class="sc-iv sp">+</div><div class="sc-pt sz">&#9675;</div><div class="sc-iv sn">&minus;</div><div class="sc-pt sz">&#9675;</div><div class="sc-iv sp">+</div><div class="sc-pt sp"><small>+</small></div><div class="sc-iv sp">+</div></div><div class="sc-r"><div class="sc-lb">\(D\!=\!(x{-}3)(x{+}2)\)</div><div class="sc-iv sp">+</div><div class="sc-pt sx">&parallel;</div><div class="sc-iv sn">&minus;</div><div class="sc-pt sn"><small>&minus;</small></div><div class="sc-iv sn">&minus;</div><div class="sc-pt sn"><small>&minus;</small></div><div class="sc-iv sn">&minus;</div><div class="sc-pt sx">&parallel;</div><div class="sc-iv sp">+</div></div><div class="sc-r sc-res"><div class="sc-lb">\(N/D\)</div><div class="sc-iv sr sp">+</div><div class="sc-pt sr sx">&parallel;</div><div class="sc-iv sr sn">&minus;</div><div class="sc-pt sr sz">&#9675;</div><div class="sc-iv sr sp">+</div><div class="sc-pt sr sz">&#9675;</div><div class="sc-iv sr sn">&minus;</div><div class="sc-pt sr sx">&parallel;</div><div class="sc-iv sr sp">+</div></div></div><div class="sol-res">Soluzione: \((-\infty,-2)\cup[-1,1]\cup(3,+\infty)\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-3-2">
+  <div class="ec-hdr"><span class="ec-num">Es. 3.2</span><span class="ec-sub">Disequazione fratta</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi:</strong><div class="fc">\( \dfrac{2x^2+x-1}{x^2-4} \leq 0 \)</div></div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body">
+        <p><strong>N(x) fattorizzato:</strong> \((2x-1)(x+1)\)</p>
+        <p><strong>D(x) fattorizzato:</strong> \((x-2)(x+2)\)</p>
+        <p>Valori critici in ordine: \(-2\) (escluso), \(-1\), \(\tfrac{1}{2}\), \(2\) (escluso)</p>
+      </div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra tabella e soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Fattorizzo: \(N=(2x-1)(x+1)\), \(D=(x-2)(x+2)\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Zeros di N: \(x=-1,\; x=\tfrac{1}{2}\). Esclusi: \(x=\pm2\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Studio il segno riga per riga (vedi tabella sopra)</div></div><div class="step"><div class="step-n">4</div><div class="step-body">Seleziono gli intervalli con \(N/D \leq 0\) (rosso e ○), escludo i \(\parallel\)</div></div><div class="sc"><div class="sc-r sc-hdr"><div class="sc-lb">x</div><div class="sc-iv"></div><div class="sc-pt">\(-2\)</div><div class="sc-iv"></div><div class="sc-pt">\(-1\)</div><div class="sc-iv"></div><div class="sc-pt">\(\tfrac{1}{2}\)</div><div class="sc-iv"></div><div class="sc-pt">\(2\)</div><div class="sc-iv"></div></div><div class="sc-r"><div class="sc-lb">\(N\!=\!(2x{-}1)(x{+}1)\)</div><div class="sc-iv sp">+</div><div class="sc-pt sp"><small>+</small></div><div class="sc-iv sp">+</div><div class="sc-pt sz">&#9675;</div><div class="sc-iv sn">&minus;</div><div class="sc-pt sz">&#9675;</div><div class="sc-iv sp">+</div><div class="sc-pt sp"><small>+</small></div><div class="sc-iv sp">+</div></div><div class="sc-r"><div class="sc-lb">\(D\!=\!(x{-}2)(x{+}2)\)</div><div class="sc-iv sp">+</div><div class="sc-pt sx">&parallel;</div><div class="sc-iv sn">&minus;</div><div class="sc-pt sn"><small>&minus;</small></div><div class="sc-iv sn">&minus;</div><div class="sc-pt sn"><small>&minus;</small></div><div class="sc-iv sn">&minus;</div><div class="sc-pt sx">&parallel;</div><div class="sc-iv sp">+</div></div><div class="sc-r sc-res"><div class="sc-lb">\(N/D\)</div><div class="sc-iv sr sp">+</div><div class="sc-pt sr sx">&parallel;</div><div class="sc-iv sr sn">&minus;</div><div class="sc-pt sr sz">&#9675;</div><div class="sc-iv sr sp">+</div><div class="sc-pt sr sz">&#9675;</div><div class="sc-iv sr sn">&minus;</div><div class="sc-pt sr sx">&parallel;</div><div class="sc-iv sr sp">+</div></div></div><div class="sol-res">Soluzione: \((-2,-1\,]\cup[\,\tfrac{1}{2},2)\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-3-3">
+  <div class="ec-hdr"><span class="ec-num">Es. 3.3</span><span class="ec-sub">Disequazione fratta</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi:</strong><div class="fc">\( \dfrac{3x^2-7x+2}{x^2-9} > 0 \)</div></div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body">
+        <p><strong>N(x) fattorizzato:</strong> \((3x-1)(x-2)\)</p>
+        <p><strong>D(x) fattorizzato:</strong> \((x-3)(x+3)\)</p>
+        <p>Valori critici in ordine: \(-3\) (escluso), \(\tfrac{1}{3}\), \(2\), \(3\) (escluso)</p>
+      </div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra tabella e soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Fattorizzo: \(N=(3x-1)(x-2)\), \(D=(x-3)(x+3)\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Zeros di N: \(x=\tfrac{1}{3},\; x=2\). Esclusi: \(x=\pm3\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Studio il segno riga per riga (vedi tabella sopra)</div></div><div class="step"><div class="step-n">4</div><div class="step-body">Con \(&gt;0\) (stretto): i valori nulli ○ sono ESCLUSI</div></div><div class="sc"><div class="sc-r sc-hdr"><div class="sc-lb">x</div><div class="sc-iv"></div><div class="sc-pt">\(-3\)</div><div class="sc-iv"></div><div class="sc-pt">\(\tfrac{1}{3}\)</div><div class="sc-iv"></div><div class="sc-pt">\(2\)</div><div class="sc-iv"></div><div class="sc-pt">\(3\)</div><div class="sc-iv"></div></div><div class="sc-r"><div class="sc-lb">\(N\!=\!(3x{-}1)(x{-}2)\)</div><div class="sc-iv sp">+</div><div class="sc-pt sp"><small>+</small></div><div class="sc-iv sp">+</div><div class="sc-pt sz">&#9675;</div><div class="sc-iv sn">&minus;</div><div class="sc-pt sz">&#9675;</div><div class="sc-iv sp">+</div><div class="sc-pt sp"><small>+</small></div><div class="sc-iv sp">+</div></div><div class="sc-r"><div class="sc-lb">\(D\!=\!(x{-}3)(x{+}3)\)</div><div class="sc-iv sp">+</div><div class="sc-pt sx">&parallel;</div><div class="sc-iv sn">&minus;</div><div class="sc-pt sn"><small>&minus;</small></div><div class="sc-iv sn">&minus;</div><div class="sc-pt sn"><small>&minus;</small></div><div class="sc-iv sn">&minus;</div><div class="sc-pt sx">&parallel;</div><div class="sc-iv sp">+</div></div><div class="sc-r sc-res"><div class="sc-lb">\(N/D\)</div><div class="sc-iv sr sp">+</div><div class="sc-pt sr sx">&parallel;</div><div class="sc-iv sr sn">&minus;</div><div class="sc-pt sr sz">&#9675;</div><div class="sc-iv sr sp">+</div><div class="sc-pt sr sz">&#9675;</div><div class="sc-iv sr sn">&minus;</div><div class="sc-pt sr sx">&parallel;</div><div class="sc-iv sr sp">+</div></div></div><div class="sol-res">Soluzione: \((-\infty,-3)\cup\bigl(\tfrac{1}{3},2\bigr)\cup(3,+\infty)\)</div></div>
+    </details>
+  </div>
+</div>
+</section>
+<section class="ts t4" id="tipo4">
+  <div class="th"><span class="tbadge">Tipo 4</span><span class="ttitle">Sistemi di disequazioni</span></div>
+  <details class="tbox">
+  <summary><span>⚖️</span> Teoria: sistemi di disequazioni <span class="tarrow">▼</span></summary>
+  <div class="tbody">
+<p>Il sistema richiede che <strong>tutte</strong> le disequazioni siano soddisfatte contemporaneamente.</p>
+<ol>
+  <li>Risolvi ogni disequazione <strong>separatamente</strong>.</li>
+  <li>Rappresenta le soluzioni su una retta numerica.</li>
+  <li>La soluzione del sistema è l'<strong>intersezione</strong> \(\cap\) delle soluzioni.</li>
+</ol>
+<div class="schema">
+  <div class="caso">Es: Dis.1: \([2,5]\) e Dis.2: \((3,+\infty)\) &rarr; intersezione: \((3,5]\)</div>
+  <div class="caso"><em>Domanda guida: quando l'intersezione è vuota, cosa significa geometricamente?</em></div>
+</div></div>
+</details>
+  
+<div class="ec" id="ex-4-1">
+  <div class="ec-hdr"><span class="ec-num">Es. 4.1</span><span class="ec-sub">Sistema di disequazioni</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi il sistema:</strong>
+      <div class="sys-wrap"><span class="sys-brace">&#123;</span><div><div class="sys-line">\(x^2-5x+6 \leq 0\)</div><div class="sys-line">\(x^2-1 &gt; 0\)</div></div></div>
+    </div>
+    <details class="hint-d"><summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Fattorizza: \((x-2)(x-3)\leq 0\) e \((x-1)(x+1)&gt;0\).</li><li>Risolvi ogni disequazione separatamente.</li><li>Disegna le soluzioni su una retta e trova l'intersezione.</li></ol></div></details>
+    <details class="sol-d"><summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Dis.1: \((x-2)(x-3)\leq 0\) &rarr; \(2\leq x\leq 3\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Dis.2: \((x-1)(x+1)&gt;0\) &rarr; \(x&lt;-1\) oppure \(x&gt;1\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Intersezione: \([2,3]\cap(1,+\infty)=[2,3]\)</div></div><div class="sol-res">Soluzione: \(2 \leq x \leq 3\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-4-2">
+  <div class="ec-hdr"><span class="ec-num">Es. 4.2</span><span class="ec-sub">Sistema di disequazioni</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi il sistema:</strong>
+      <div class="sys-wrap"><span class="sys-brace">&#123;</span><div><div class="sys-line">\(x^2-3x-4 &lt; 0\)</div><div class="sys-line">\(2x^2-5x+2 \geq 0\)</div></div></div>
+    </div>
+    <details class="hint-d"><summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Fattorizza: \((x-4)(x+1)&lt;0\).</li><li>Per la 2ª: \(\Delta=9\) &rarr; \((2x-1)(x-2)\geq0\).</li></ol></div></details>
+    <details class="sol-d"><summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Dis.1: \(-1&lt;x&lt;4\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Dis.2: \(x\leq\tfrac{1}{2}\) oppure \(x\geq 2\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Intersezione: \((-1,\tfrac{1}{2}\,]\cup[\,2,4)\)</div></div><div class="sol-res">Soluzione: \((-1,\,\tfrac{1}{2}\,]\cup[\,2,\,4)\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-4-3">
+  <div class="ec-hdr"><span class="ec-num">Es. 4.3</span><span class="ec-sub">Sistema di disequazioni</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Risolvi il sistema:</strong>
+      <div class="sys-wrap"><span class="sys-brace">&#123;</span><div><div class="sys-line">\(x^2-6x+5 \leq 0\)</div><div class="sys-line">\(x^2-x-2 &gt; 0\)</div></div></div>
+    </div>
+    <details class="hint-d"><summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Fattorizza la 1ª: somma \(-6\), prodotto \(5\).</li><li>Fattorizza la 2ª: somma \(-1\), prodotto \(-2\).</li></ol></div></details>
+    <details class="sol-d"><summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Dis.1: \((x-1)(x-5)\leq0\) &rarr; \(1\leq x\leq5\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Dis.2: \((x-2)(x+1)&gt;0\) &rarr; \(x&lt;-1\) oppure \(x&gt;2\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Intersezione: \([1,5]\cap(2,+\infty)=(2,5]\)</div></div><div class="sol-res">Soluzione: \(2 < x \leq 5\)</div></div>
+    </details>
+  </div>
+</div>
+</section>
+<section class="ts t5" id="tipo5">
+  <div class="th"><span class="tbadge">Tipo 5</span><span class="ttitle">Problemi</span></div>
+  <details class="tbox">
+  <summary><span>🌍</span> Teoria: impostare un problema <span class="tarrow">▼</span></summary>
+  <div class="tbody">
+<ol>
+  <li><strong>Definisci l'incognita</strong>: scegli la lettera che rappresenta la grandezza cercata.</li>
+  <li><strong>Esprimi le altre grandezze</strong> in funzione dell'incognita.</li>
+  <li><strong>Traduci la condizione</strong> del problema nella disequazione.</li>
+  <li><strong>Risolvi</strong> e verifica che le soluzioni abbiano senso nel contesto (es. lunghezze &gt; 0).</li>
+</ol>
+<div class="schema">
+  <div class="caso">Es: "il prodotto di due numeri consecutivi supera 20" &rarr; \(n(n+1)&gt;20\)</div>
+  <div class="caso"><em>Domanda guida: perché il passo di verifica nel contesto è indispensabile?</em></div>
+</div></div>
+</details>
+  
+<div class="ec" id="ex-5-1">
+  <div class="ec-hdr"><span class="ec-num">Es. 5.1</span><span class="ec-sub">Problema aritmetico</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Problema:</strong> Trova tutti i valori interi di \(n\) per cui \(n^2\) è strettamente minore di \(4n+12\). Elenca le soluzioni intere.</div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Imposta: \(n^2 \;\square\; 4n+12\) (porta tutto al 1° membro).</li><li>Fattorizza e risolvi, poi seleziona gli interi.</li></ol></div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">\(n^2-4n-12&lt;0\) &rarr; \((n-6)(n+2)&lt;0\) &rarr; \(-2&lt;n&lt;6\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Valori interi: \(n\in\{-1,0,1,2,3,4,5\}\)</div></div><div class="sol-res">Soluzione: \(n \in \{-1,\,0,\,1,\,2,\,3,\,4,\,5\}\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-5-2">
+  <div class="ec-hdr"><span class="ec-num">Es. 5.2</span><span class="ec-sub">Problema geometrico</span></div>
+  <div class="ec-body">
+    <div class="enun"><strong>Problema:</strong> Un rettangolo ha il lato maggiore che supera di 4 m il lato minore. Trova i valori del lato minore \(l&gt;0\) affinché l'area sia almeno 21 m² e il perimetro non superi 26 m.</div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Lato maggiore \(= l+4\). Scrivi le due disequazioni.</li><li>Risolvi il sistema e tieni solo \(l&gt;0\).</li></ol></div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">Area: \(l(l+4)\geq21\) &rarr; \(l^2+4l-21\geq0\) &rarr; \((l+7)(l-3)\geq0\) &rarr; \(l\geq3\) (con \(l&gt;0\))</div></div><div class="step"><div class="step-n">2</div><div class="step-body">Perimetro: \(2(2l+4)\leq26\) &rarr; \(l\leq4{,}5\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Sistema: \(3\leq l\leq4{,}5\)</div></div><div class="sol-res">Soluzione: \(3 \leq l \leq 4{,}5\text{ m}\)</div></div>
+    </details>
+  </div>
+</div>
+<div class="ec" id="ex-5-3">
+  <div class="ec-hdr"><span class="ec-num">Es. 5.3</span><span class="ec-sub">Problema applicato</span></div>
+  <div class="ec-body">
+    <div class="enun">Mario dispone di 40 m di rete per recintare un appezzamento rettangolare usando <em>tutta</em> la rete. Per quali larghezze \(l\) l'area è superiore a 96 m²?</div>
+    <details class="hint-d">
+      <summary>&#128161; Suggerimento</summary>
+      <div class="hint-body"><ol><li>Perimetro \(=40\) &rarr; \(b=20-l\). Area \(= l(20-l)\).</li><li>Imposta la disequazione e risolvi.</li></ol></div>
+    </details>
+    <details class="sol-d">
+      <summary>&#9989; Mostra soluzione</summary>
+      <div class="sol-body"><div class="step"><div class="step-n">1</div><div class="step-body">\(l(20-l)&gt;96\) &rarr; \(l^2-20l+96&lt;0\)</div></div><div class="step"><div class="step-n">2</div><div class="step-body">\(\Delta=400-384=16\) &rarr; \(l_1=8,\; l_2=12\)</div></div><div class="step"><div class="step-n">3</div><div class="step-body">Con \(a=1&gt;0\) e \(&lt;0\): \(8&lt;l&lt;12\) (compatibile con \(0&lt;l&lt;20\))</div></div><div class="sol-res">Soluzione: \(8 < l < 12\text{ m}\)</div></div>
+    </details>
+  </div>
+</div>
+</section>
+</main>
+<script>
+const dsaBtn=document.getElementById('btn-dsa');
+const expBtn=document.getElementById('btn-exp');
+dsaBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('dsa');
+  dsaBtn.textContent=document.body.classList.contains('dsa')?'🔤 DSA: ON':'🔤 Modalità DSA';
+});
+expBtn.addEventListener('click',()=>{
+  const ds=document.querySelectorAll('details');
+  const any=[...ds].some(d=>d.open);
+  ds.forEach(d=>d.open=!any);
+  expBtn.textContent=any?'▼ Espandi tutto':'▲ Chiudi tutto';
+});
+document.querySelectorAll('details').forEach(d=>{
+  d.addEventListener('toggle',()=>{
+    if(d.open&&window.MathJax) MathJax.typesetPromise([d]);
+    const n=[...document.querySelectorAll('.sol-d[open]')].length;
+    document.getElementById('pb').textContent='Soluzioni viste: '+n+'/15';
+  });
+});
+</script>
+</body></html>
